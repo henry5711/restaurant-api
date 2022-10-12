@@ -13,11 +13,11 @@ class RolUserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index()
     {
        $rols=rol_user::all();
 
-       return view('rols',['data'=>$rols,'id'=>$id]);
+       return view('rols',['data'=>$rols]);
     }
 
     /**
@@ -66,7 +66,7 @@ class RolUserController extends Controller
 
         $rols=rol_user::all();
 
-        return view('rols',['data'=>$rols]);
+       return redirect()->route('index_rol');
     }
 
     /**

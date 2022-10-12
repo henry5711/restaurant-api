@@ -18,7 +18,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 //rutas para rol de usuarios
-Route::get('rol_user/index/{id}', [App\Http\Controllers\RolUserController::class, 'index'])
+Route::get('rol_user/index', [App\Http\Controllers\RolUserController::class, 'index'])
         ->name('index_rol');
 
 Route::get('rol_user/form', [App\Http\Controllers\RolUserController::class, 'formpost'])
