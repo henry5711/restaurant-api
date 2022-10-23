@@ -21,16 +21,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('rol_user/index', [App\Http\Controllers\RolUserController::class, 'index'])
         ->name('index_rol');
 
-Route::get('rol_user/form', [App\Http\Controllers\RolUserController::class, 'formpost'])
-        ->name('store_rols');
-
  Route::get('prev/{id}', [App\Http\Controllers\RolUserController::class, 'prevupdate'])
         ->name('prev');
 
 Route::get('rol_user/{id}', [App\Http\Controllers\RolUserController::class, 'show'])
         ->name('showrol');
 
-Route::post('rol_user', [App\Http\Controllers\RolUserController::class, 'store'])
+Route::post('rol_user/store', [App\Http\Controllers\RolUserController::class, 'store'])
         ->name('store_real_rols');
 
 Route::post('rol_user/update/{id}', [App\Http\Controllers\RolUserController::class, 'update'])

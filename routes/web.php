@@ -18,9 +18,12 @@ Route::get('/', function () {
 })->name('hola');
 
 Route::get('rols/store', function () {
-    return view('rolstore');
-})->name('store_rol');
+    return view('rol_form');
+})->name('store_rol_rol');
 
+Route::get('rols/update', function () {
+    return view('rol_edit');
+})->name('update_rol_rol');
 
 
 

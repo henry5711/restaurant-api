@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\rol_user;
 use App\Http\Requests\Storerol_userRequest;
 use App\Http\Requests\Updaterol_userRequest;
+use Illuminate\Http\Request;
 
 class RolUserController extends Controller
 {
@@ -13,11 +14,11 @@ class RolUserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-       $rols=rol_user::all();
+       $rols=rol_user::get();
 
-       return view('rols',['data'=>$rols]);
+       return view('rol_index',['data'=>$rols]);
     }
 
     /**
@@ -26,16 +27,15 @@ class RolUserController extends Controller
      * @param  \App\Http\Requests\Storerol_userRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Storerol_userRequest $request)
+    public function store(Request $request)
     {
+
         $newrol=new rol_user();
         $newrol->name=$request->name;
         $newrol->status='a';
         $newrol->save();
 
-        $rols=rol_user::all();
-
-       return view('rols',['data'=>$rols]);
+        return redirect()->route('index_rol');
     }
 
     /**
@@ -46,6 +46,8 @@ class RolUserController extends Controller
      */
     public function show(int $id)
     {
+        session_start();
+        dd($_SESSION['hola']);
         $rols=rol_user::where('id',$id)->get();
         return view('rolsshow',['data'=>$rols]);
     }
@@ -80,9 +82,7 @@ class RolUserController extends Controller
         $newrol=rol_user::where('id',$id)->first();
         $newrol->delete();
 
-        $rols=rol_user::all();
-
-        return view('rols',['data'=>$rols]);
+        return redirect()->route('index_rol');
     }
 
     public function formpost(){
@@ -90,7 +90,7 @@ class RolUserController extends Controller
     }
 
     public function prevupdate($id){
-        $rols=rol_user::where('id',$id)->first();
-        return view('rolsupdate',['data'=>$rols]);
+        $rols=rol_user::where('id',$id)->get();
+        return view('rol_edit',['data'=>$rols]);
     }
 }
