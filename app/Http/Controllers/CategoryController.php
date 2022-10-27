@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\category;
 use App\Http\Requests\StorecategoryRequest;
 use App\Http\Requests\UpdatecategoryRequest;
+use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
@@ -26,9 +27,15 @@ class CategoryController extends Controller
      * @param  \App\Http\Requests\StorecategoryRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorecategoryRequest $request)
+    public function store(Request $request)
     {
-        //
+        $newrol=new category();
+        $newrol->name=$request->name;
+        $newrol->descripcion=$request->descripcion;
+        $newrol->status='a';
+        $newrol->save();
+
+        return redirect()->route('index_category');
     }
 
     /**
@@ -37,9 +44,10 @@ class CategoryController extends Controller
      * @param  \App\Models\category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(category $category)
+    public function show(int $id)
     {
-        //
+        $rols=category::where('id',$id)->get();
+        return view('rolsshow',['data'=>$rols]);
     }
 
     /**
@@ -49,9 +57,17 @@ class CategoryController extends Controller
      * @param  \App\Models\category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatecategoryRequest $request, category $category)
+    public function update(Request $request, $id)
     {
-        //
+        $newrol=category::where('id',$id)->first();
+        $newrol->name=$request->name;
+        $newrol->descripcion=$request->descripcion;
+        $newrol->status=$request->status;
+        $newrol->save();
+
+        $rols=category::all();
+
+       return redirect()->route('index_rol');
     }
 
     /**
@@ -60,8 +76,17 @@ class CategoryController extends Controller
      * @param  \App\Models\category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(category $category)
+    public function destroy($id)
     {
-        //
+        $newrol=category::where('id',$id)->first();
+        $newrol->delete();
+
+        return redirect()->route('index_rol');
+    }
+
+    public function prevupdate(int $id)
+    {
+        $rols=category::where('id',$id)->get();
+        return view('categoryupdate',['data'=>$rols]);
     }
 }
