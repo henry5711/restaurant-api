@@ -25,5 +25,15 @@ Route::get('rols/update', function () {
     return view('rol_edit');
 })->name('update_rol_rol');
 
+//Categorie
+Route::get('category/store', function () {
+    return view('categorystore');
+})->name('store_category');
+
+//Product
+
+Route::get('product/store', function () {
+    return view('product_store');
+})->name('store_product_from');
 
 
