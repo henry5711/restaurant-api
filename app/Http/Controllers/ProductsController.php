@@ -22,7 +22,7 @@ class ProductsController extends Controller
 
        return view('product_index',['data'=>$category]);
     }
-
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -40,15 +40,14 @@ class ProductsController extends Controller
         $newrol->categorie_id=$request->categorie_id;
         $newrol->save();
 
-        /* if($request->url){
+         if($request->url){
         $img= new imagenes();
             $path = Storage::putFile('public/imagenes', $request->url);
                 $cont=env('APP_URL').Storage::url($path);
                 $img['url']=$cont;
                 $img['product_id']=$newrol->id;
                 $img->save();
-        } */
-
+        } 
         return redirect()->route('index_product');
     }
 
@@ -105,5 +104,12 @@ class ProductsController extends Controller
     {
         $rols=products::where('id',$id)->get();
         return view('product_update',['data'=>$rols]);
+    }
+
+    public function index_clientes()
+    {
+        $category=products::with('imagenes')->get();
+
+       return view('index_clientes',['data'=>$category]);
     }
 }

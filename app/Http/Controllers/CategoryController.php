@@ -17,6 +17,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        session_start();
         $category=category::get();
 
        return view('category_index',['data'=>$category]);
@@ -30,6 +31,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        session_start();
         $newrol=new category();
         $newrol->name=$request->name;
         $newrol->descripcion=$request->descripcion;
@@ -47,6 +49,7 @@ class CategoryController extends Controller
      */
     public function show(int $id)
     {
+        session_start();
         $rols=category::where('id',$id)->get();
         return view('rolsshow',['data'=>$rols]);
     }
@@ -60,6 +63,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
+        session_start();
         $newrol=category::where('id',$id)->first();
         $newrol->name=$request->name;
         $newrol->descripcion=$request->descripcion;
@@ -79,6 +83,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
+        session_start();
         $newrol=category::where('id',$id)->first();
         $newrol->delete();
 
@@ -87,6 +92,7 @@ class CategoryController extends Controller
 
     public function prevupdate(int $id)
     {
+        session_start();
         $rols=category::where('id',$id)->get();
         return view('categoryupdate',['data'=>$rols]);
     }

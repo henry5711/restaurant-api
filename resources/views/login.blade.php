@@ -16,15 +16,15 @@
           <div class="card bg-light text-black" style="border-radius: 1rem;">
             <div class="card-body p-5 text-center">
               <h2 class="fw-bold mb-2 text-uppercase">Iniciar Sesión</h2>
-              <form action="">
+              <form action="{{route('login_usuario')}}">
                 <div class="form-group">
-                  <label class="form-label" for="email">Correo</label>
-                  <input class="form-control" type="email" id="email">
+                  <label class="form-label" for="name">Nombre usuario</label>
+                  <input class="form-control" type="name" id="name" name="name_user">
                 </div>
               
                 <div class="form-group">
                   <label class="form-label" for="password">Contraseña</label>
-                  <input class="form-control" type="password" id="password">
+                  <input class="form-control" type="password" id="password" name="password">
                 </div>
               
                 <div class="form-group form-check mt-3">

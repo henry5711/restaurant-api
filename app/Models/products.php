@@ -10,4 +10,9 @@ class products extends Model
     use HasFactory;
     protected $table='products';
     protected $fillable=['name','price','descripcion','ingredientes','status','categorie_id'];
+   
+    public function imagenes(){
+        return $this->hasOne(imagenes::class,'product_id');
+    }
+
 }

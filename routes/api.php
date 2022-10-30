@@ -21,8 +21,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('rol_user/index', [App\Http\Controllers\RolUserController::class, 'index'])
     ->name('index_rol');
 
-Route::get('prev/{id}', [App\Http\Controllers\RolUserController::class, 'prevupdate'])
-    ->name('prev');
+Route::get('prev/rol/{id}', [App\Http\Controllers\RolUserController::class, 'prevupdate'])
+    ->name('prev_rol');
 
 Route::get('rol_user/{id}', [App\Http\Controllers\RolUserController::class, 'show'])
     ->name('showrol');
@@ -52,8 +52,8 @@ Route::post('user/{id}', [App\Http\Controllers\UsuariosController::class, 'updat
 Route::get('category/index', [App\Http\Controllers\CategoryController::class, 'index'])
     ->name('index_category');
 
-Route::get('prev/{id}', [App\Http\Controllers\CategoryController::class, 'prevupdate'])
-    ->name('prev');
+Route::get('prev/category/{id}', [App\Http\Controllers\CategoryController::class, 'prevupdate'])
+    ->name('prev_categories');
 
 Route::get('category/{id}', [App\Http\Controllers\CategoryController::class, 'show'])
     ->name('show_category');
@@ -72,6 +72,9 @@ Route::get('category/delete/{id}', [App\Http\Controllers\CategoryController::cla
 Route::get('product/index', [App\Http\Controllers\ProductsController::class, 'index'])
     ->name('index_product');
 
+Route::get('product/index_clientes', [App\Http\Controllers\ProductsController::class, 'index_clientes'])
+    ->name('index_clientes');
+
 Route::post('product/store', [App\Http\Controllers\ProductsController::class, 'store'])
     ->name('store_product');
 
@@ -83,3 +86,24 @@ Route::post('product/update/{id}', [App\Http\Controllers\ProductsController::cla
 
 Route::get('prev/{id}', [App\Http\Controllers\ProductsController::class, 'prevupdate'])
     ->name('prev_product');
+
+//Rutas pedidos
+Route::get('pedidos/index', [App\Http\Controllers\PedidosController::class, 'index'])
+    ->name('pedido_index');//para vistas
+
+Route::post('pedidos/store', [App\Http\Controllers\PedidosController::class, 'store'])
+    ->name('pedido_store');//para vistas
+
+Route::get('pedidos/delete/{id}', [App\Http\Controllers\PedidosController::class, 'destroy'])
+    ->name('delete_pedidos');
+
+Route::post('pedidos/update/{id}', [App\Http\Controllers\PedidosController::class, 'update'])
+    ->name('pedido_update');
+
+Route::get('prev/pedidos/{id}', [App\Http\Controllers\PedidosController::class, 'prevupdate'])
+    ->name('prev_pedidos');
+
+//Rutas usuarios
+
+Route::get('usuario/login', [App\Http\Controllers\UsuariosController::class, 'login'])
+    ->name('login_usuario');

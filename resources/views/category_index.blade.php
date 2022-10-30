@@ -31,6 +31,7 @@
       <thead class="table-primary">
         <tr>
           <th scope="col">Nombre</th>
+          <th scope="col">Descripcion</th>
           <th scope="col">Estado</th>
           <th scope="col">Acción</th>
           <th scope="col">Eliminar</th>
@@ -47,13 +48,16 @@
               <a href="#"><i class="fa-solid fa-eye"></i></a>
             </td>
             <td>
-              <button type="button" class="btn btn-outline-danger btn-sm"><a
-                  href="{{route('prev',$value['id'])}}">Editar</a></button>
+              <button type="button" class="btn btn-outline-primary btn-sm"><a 
+                href="{{route('prev_categories',$value['id'])}}">editas
+               </a></button>
             </td>
           <td>
-            <a href="{{route('delete_rols',$value['id'])}}">
-              <button type="button" class="btn btn-danger btn-close" aria-label="Close"></button>
-            </a> 
+            
+              <button type="button" class="btn btn-danger btn-close" aria-label="Close">
+                <a href="{{route('delete_category',$value['id'])}}">r;iminasr </a> 
+              </button>
+           
           </td>
         </tr>
         @endforeach

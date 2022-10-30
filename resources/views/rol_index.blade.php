@@ -41,10 +41,9 @@
         <tr>
           <th>{{$value['name']}}</th>
           <th>{{$value['status']}}</th>
-          <td>activo</td>
           <td><a href="#"><i class="fa-solid fa-eye"></i></a></td>
           <td><button type="button" class="btn btn-outline-danger btn-sm"><a
-                href="{{route('prev',$value['id'])}}">Editar</a></button>
+                href="{{route('prev_rol',$value['id'])}}">Editar</a></button>
             <button type="button" class="btn btn-outline-danger btn-sm"><a
                 href="{{route('delete_rols',$value['id'])}}">Eliminar</a></button>
           </td>

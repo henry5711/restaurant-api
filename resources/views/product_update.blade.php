@@ -27,7 +27,7 @@
   <div class="container">
     <h1 class="mt-3 text-center">Editar producto</h1>
     @foreach ($data as $key=>$value)
-    <form action="{{route('store_product')}}" method="POST" class="mt-5">
+    <form action="{{route('product_update',$value['id'])}}" method="POST" class="mt-5">
       <div class="input-group mb-3 col-6">
         <span class="input-group-text">Nombre del producto</span>
         <input type="text" class="form-control" aria-describedby="namehelp" name="name" id="name" value="{{$value['name']}}">
@@ -44,6 +44,10 @@
       <div class="input-group mb-3 col-6">
         <span class="input-group-text">Ingredientes</span>
         <input type="text" class="form-control" name="ingredientes" id="name" value="{{$value['ingredientes']}}">
+      </div>
+      <div class="input-group mb-3 col-6">
+        <span class="input-group-text">Estatus</span>
+        <input type="text" class="form-control" name="status" id="name" value="{{$value['status']}}">
       </div>
       <div class="input-group mb-3 col-6">
         <span class="input-group-text">Categoria</span>

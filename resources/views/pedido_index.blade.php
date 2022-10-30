@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Roles</title>
+    <title>Pedidos</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
   </head>
   <body class="bg-light">
@@ -12,20 +12,31 @@
       <table class="table table-hover">
       <thead class="table-dark">
           <tr>
-          <th scope="col">ID</th>
           <th scope="col">ID Usuario</th>
           <th scope="col">Direccion</th>
           <th scope="col">Estado</th>
-          <th scope="col">Ver</th>
-          <th scope="col">ID pedido</th>
-          <th scope="col">Ver</th>
-          <th scope="col">ID producto</th>
-          <th scope="col">Ver</th>
           <th scope="col">Acción</th>
           </tr>
       </thead>
       <tbody>
-          
+        <tr>
+          @foreach ($data as $key=>$value)
+          <tr>
+            <th>{{$value['user_id']}}</th>
+            <th>{{$value['direccion']}}</th>
+            <td>{{$value['status']}}</td>
+          <td>
+            <button type="button" class="btn btn-outline-danger btn-sm"><a
+              href="{{route('prev_pedidos',$value['id'])}}">Editar</a>
+            </button>
+          </td>
+          <td>
+            <a href="{{route('delete_pedidos',$value['id'])}}">
+              <button type="button" class="btn btn-danger btn-close" aria-label="Close"></button>
+            </a>  
+          </td>
+        </tr>
+        @endforeach
       </tbody>
       </table>
       <div class="d-flex pe-3 ps-3">

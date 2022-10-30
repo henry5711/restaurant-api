@@ -18,7 +18,7 @@ class PedidosController extends Controller
     {
         $category=pedidos::get();
 
-       return view('category_index',['data'=>$category]);
+       return view('pedido_index',['data'=>$category]);
     }
 
     /**
@@ -35,7 +35,7 @@ class PedidosController extends Controller
         $newrol->status='a';
         $newrol->save();
 
-        return redirect()->route('index_category');
+        return redirect()->route('pedido_index');
     }
 
     /**
@@ -67,7 +67,7 @@ class PedidosController extends Controller
 
         $rols=pedidos::all();
 
-       return redirect()->route('index_rol');
+       return redirect()->route('pedido_index');
     }
 
     /**
@@ -81,6 +81,6 @@ class PedidosController extends Controller
         $newrol=pedidos::where('id',$id)->first();
         $newrol->delete();
 
-        return redirect()->route('index_rol');
+        return redirect()->route('pedido_index');
     }
 }

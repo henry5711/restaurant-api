@@ -36,4 +36,9 @@ Route::get('product/store', function () {
     return view('product_store');
 })->name('store_product_from');
 
+//Login
+Route::get('login', function () {
+    return view('login');
+})->name('login');
+
 

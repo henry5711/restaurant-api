@@ -113,14 +113,23 @@ class UsuariosController extends Controller
 
     public function login(Request $request){
         $user=usuarios::where('name_user',$request->name_user)
-        ->where('password',$request->password)->get();
+        ->where('password',$request->password)->first();
 
         if(empty($user)){
             return view('error',['data'=>$rols]);
         }
 
-        else{
-            return view('principal',['data'=>$rols]);
+        else if(!empty($user) and $user->rol_id==2){
+            session_start();
+            $_SESSION['user_id']=$user->id;
+            $_SESSION['user_name']=$user->name_user;
+            return view('home',['n'=>$_SESSION['user_name']]);
         }
+        else if(!empty($user) and $user->rol_id==3){
+            session_start();
+           
+            return redirect()->route('index_clientes');
+        }
+
     }
 }

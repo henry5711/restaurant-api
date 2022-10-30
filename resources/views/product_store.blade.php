@@ -26,7 +26,7 @@
   </nav>
   <div class="container">
     <h1 class="mt-3 text-center">Agregar producto</h1>
-    <form action="{{route('store_product')}}" method="POST" class="mt-5">
+    <form action="{{route('store_product')}}" method="POST" class="mt-5" enctype="multipart/form-data">
       <div class="input-group mb-3 col-6">
         <span class="input-group-text">Nombre del producto</span>
         <input type="text" class="form-control" aria-describedby="namehelp" name="name" id="name">
@@ -48,7 +48,13 @@
         <span class="input-group-text">Categoria</span>
         <input type="text" class="form-control" name="categorie_id" id="name">
       </div>
+      <div class="mb-3">
+      <label for="formFile" class="form-label">Cargar imagen</label>
+      <input class="form-control" type="file" id="formFile" name="url">
+      </div>
+
       <button type="submit" class="btn btn-primary mt-4">Guardar</button>
+
     </form>
   </div>
 </body>
